@@ -9,6 +9,7 @@
 *.blg
 *.fls
 *.fdb_latexmk
+test.tex
 
 # 系统文件
 .DS_Store

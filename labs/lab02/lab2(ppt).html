@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Wang Yao">
+  <title>Лабораторная работа №2</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/CambridgeUS.css" id="theme">
+  
+  
+  
+  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Лабораторная работа №2</h1>
+  <p class="author">Wang Yao</p>
+  <p class="date">18 Septembe, 2026 Moscow</p>
+</section>
+
+<section id="цель-работы" class="slide level1">
+<h1>Цель работы</h1>
+<p>Изучить базовую структкру документа LaTeX, научиться и компилировать простые “.tex”файл в PDF, а также освоить специальные символы, используемые для управления LaTeX.</p>
+</section>
+<section id="ход-лабораторной-работы" class="slide level1">
+<h1>Ход лабораторной работы</h1>
+<h2 id="первый-документ-latex">Первый документ LaTeX</h2>
+<p><strong>Структура файла “first.tex”</strong></p>
+<p><img src="https://github.com/wangyao200036/2026-2-study-practical-scientific-writing/raw/main/pic/2.1.1.png" style="zoom:67%;" /></p>
+<p><strong>Компиляция:</strong></p>
+<pre><code>pdflatex first.tex</code></pre>
+<p><strong>Результат</strong>: файл <code>first.pdf</code> с текстом и номером страницы.</p>
+</section>
+<section class="slide level1">
+
+<h2 id="структура-документа-latex">Структура документа LaTeX</h2>
+<p><strong>Два основные части:</strong></p>
+<ul>
+<li><strong>Превмбула</strong> - до <code>\begin{document}</code>
+<ul>
+<li>настройка класса документа</li>
+<li>подключение пакетов</li>
+</ul></li>
+<li><strong>Тело документа</strong> - между <code>\begin{document}</code> и <code>\end{document}</code>
+<ul>
+<li>содержимое документа</li>
+</ul></li>
+</ul>
+<p><strong>Ключевые команды:</strong></p>
+<ul>
+<li><code>\documentclass{article}</code> —</li>
+<li><code>\usepackage[T1]{fontenc}</code></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="абзацы-и-пробелы">Абзацы и пробелы</h2>
+<p>Разделение абзацев:</p>
+<ul>
+<li>Одна или несколько пустых строк разделяют абзациы</li>
+</ul>
+<p>Правила пробелов:</p>
+<ul>
+<li>Несколько пробелов подряд = один пробел</li>
+<li><code>~</code> — «жёсткий» пробел, не переносится</li>
+<li>Полезен для перекрёстных ссылок</li>
+</ul>
+<p><strong>Пример</strong>:</p>
+<pre><code>See Section~2 for details.</code></pre>
+</section>
+<section class="slide level1">
+
+<h2 id="комментарии-и-сноски">Комментарии и сноски</h2>
+<p><strong>Комментарии начинаются с %:</strong></p>
+<pre><code>% The documment class with option
+\documnetclass[a4paper,12pt]{article}</code></pre>
+<p><strong>Сноски:</strong></p>
+<pre><code>This is a simple document\footnote{with a footnote}.</code></pre>
+<p><strong>Опции документа</strong>:</p>
+<ul>
+<li><code>[a4paper]</code> — формат страницы</li>
+<li><code>[12pt]</code> — размер шрифта</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="запуск-latex">Запуск LaTeX</h2>
+<h3 id="способ-1-из-командной-строки">Способ 1: из командной строки</h3>
+<pre><code>pdflatex first.tex</code></pre>
+<h3 id="способ-2-в-среде-vs-code">Способ 2: в среде VS Code</h3>
+<ul>
+<li>Crtl + Alt + B — компиляция</li>
+<li>Crtl + Alt + V — просмотр PDF</li>
+</ul>
+<p><strong>Важно</strong>: <code>.tex</code> файлы — это простой текст.</p>
+</section>
+<section class="slide level1">
+
+<h2 id="специальные-символы-latex">Специальные символы LaTeX</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Символ</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\</code></td>
+<td>начало команды</td>
+</tr>
+<tr class="even">
+<td><code>{</code> <code>}</code></td>
+<td>обязательные аргументы</td>
+</tr>
+<tr class="odd">
+<td><code>$</code></td>
+<td>математический режим</td>
+</tr>
+<tr class="even">
+<td><code>%</code></td>
+<td>комментарий</td>
+</tr>
+<tr class="odd">
+<td><code>&amp;</code></td>
+<td>разделитель в таблицах</td>
+</tr>
+<tr class="even">
+<td><code>#</code></td>
+<td>параметр макроса</td>
+</tr>
+<tr class="odd">
+<td><code>_</code></td>
+<td>нижний индекс</td>
+</tr>
+<tr class="even">
+<td><code>^</code></td>
+<td>верхний индекс</td>
+</tr>
+<tr class="odd">
+<td><code>~</code></td>
+<td>жёсткий пробел</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level1">
+
+<h2 id="экранирование-специальных-символов">Экранирование специальных символов</h2>
+<p><strong>Короткая команда</strong> (математика и текст):</p>
+<ul>
+<li><code>\{</code> <code>\}</code> <code>\$</code> <code>\%</code> <code>\&amp;</code> <code>\#</code> <code>\_</code></li>
+</ul>
+<p><strong>Длинная команда</strong> (только текст):</p>
+<ul>
+<li><code>\textbraceleft</code> <code>\textbraceright</code></li>
+<li><code>\textdollar</code> <code>\textunderscore</code></li>
+<li><code>\textbackslash</code></li>
+<li><code>\textasciicircum</code> <code>\textasciitilde</code></li>
+</ul>
+<p><strong>Исключения</strong>: для <code>\</code>, <code>^</code>, <code>~</code> нет коротких команд</p>
+</section>
+<section class="slide level1">
+
+<h2 id="демонстрация-специальных-символов">Демонстрация специальных символов</h2>
+<p><strong>Пример кода</strong>:</p>
+<p><img src="https://github.com/wangyao200036/2026-2-study-practical-scientific-writing/raw/main/pic/2.3.png" style="zoom:50%;" /></p>
+<p><strong>Результат</strong>: символы выводятся как обычный текст.</p>
+</section>
+<section id="вывод" class="slide level1">
+<h1>Вывод</h1>
+<p>В ходе лабораторной работы изучена базовая структура документа LaTeX:</p>
+<ul>
+<li><strong>Преамбула и тело документа</strong> — основные части любого <code>.tex</code> файла</li>
+<li><strong>Комментарии</strong> — начинаются с <code>%</code></li>
+<li><strong>Специальные символы</strong> — требуют экранирования</li>
+<li><strong>Компиляция</strong> — возможна через командную строку и VS Code</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="основные-выводы">Основные выводы:</h2>
+<ul>
+<li>LaTeX-документ — это обычный текстовый файл с командами</li>
+<li>Структура документа строго определена: преамбула + тело</li>
+<li>Специальные символы играют ключевую роль в управлении LaTeX</li>
+<li>Правильное использование <code>\</code> и <code>{}</code> — основа работы с LaTeX</li>
+</ul>
+</section>
+<section id="литература" class="slide level1">
+<h1>Литература</h1>
+<ol type="1">
+<li><p>Документация LaTeX Project. https://www.latex-project.org/help/documentation/</p></li>
+<li><p>Learn LaTeX. https://www.learnlatex.org/</p></li>
+<li><p>LaTeX Wikibook. https://en.wikibooks.org/wiki/LaTeX</p></li>
+</ol>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

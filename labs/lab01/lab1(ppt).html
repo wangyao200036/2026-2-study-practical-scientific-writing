@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Wang Yao">
+  <title>Лабораторная работа №1</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/CambridgeUS.css" id="theme">
+  
+  
+  
+  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Лабораторная работа №1</h1>
+  <p class="author">Wang Yao</p>
+  <p class="date">18 Septembe, 2026 Moscow</p>
+</section>
+
+<section id="цель-работы" class="slide level1">
+<h1>Цель работы</h1>
+<p>Освоить настройку рабочего проостранства для научной работы: изучить стандарты семантического версионнрования и общепринятых комнтов. настроить Git и удальные репозитории. освоить соглашение об именовании Denote, установить дистрибутив Tex Live и настроить среду VS Code.</p>
+</section>
+<section id="ход-лабораторной-работы" class="slide level1">
+<h1>Ход лабораторной работы</h1>
+<h2 id="семантическое-версионирование">Семантическое версионирование</h2>
+<p><strong>Формат версии:</strong></p>
+<p><strong>МАЖОРНАЯ_ВЕРСИЯ.МИНОРНАЯ_ВЕРСИЯ.ПАТЧ</strong></p>
+<p><strong>Правила увеличения версия:</strong></p>
+<ul>
+<li><strong>МАЖОРНАЯ</strong> — обратно несовместимые изменения API</li>
+<li><strong>МИНОРНАЯ</strong> — новая функциональность без нарушения совместимости</li>
+<li><strong>ПАТЧ</strong> — обратно совместимые исправления</li>
+</ul>
+<p><strong>Дополнительные обозначения</strong>: предрелизные и билд-метаданные</p>
+</section>
+<section class="slide level1">
+
+<h2 id="общепринятые-коммиты">Общепринятые коммиты</h2>
+<p><strong>Спецификация Conventional Commits</strong> — соглашение о написании сообщений коммитов.</p>
+<p><strong>Структура:</strong></p>
+<pre><code>&lt;тип&gt;(&lt;область&gt;):&lt;описание изменения&gt;
+[необязательное тело]
+[необязательный нижний колонтитул]</code></pre>
+<p><strong>Основные типы:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Назначение</th>
+<th>SemVer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>feat</td>
+<td>новая функция</td>
+<td>MINOR</td>
+</tr>
+<tr class="even">
+<td>fix</td>
+<td>исправление ошибки</td>
+<td>PATCH</td>
+</tr>
+<tr class="odd">
+<td>BREAKING CHANGE</td>
+<td>несовместимое изменение</td>
+<td>MAJOR</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level1">
+
+<h2 id="основные-команды-git">Основные команды Git</h2>
+<p><strong>Изучены основные команды git:</strong></p>
+<p><strong>Работа с репозиторием:</strong></p>
+<ul>
+<li>git init # создание репозитория</li>
+<li>git status # состояние рабочего каталога</li>
+<li>git add . # добавить все изменения</li>
+<li>git commit -am # сохранить изменения</li>
+<li>git push # отправить в удалённый репозиторий</li>
+<li>git pull # получить обновления</li>
+</ul>
+<p><strong>Работа с ветками:</strong></p>
+<ul>
+<li>git branch # работа с ветками</li>
+<li>git merge # слияние веток</li>
+<li>git branch -d # удалить ветку</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="gitflow-workflow">Gitflow Workflow</h2>
+<p>Освоен рабочий процесс gitflow:</p>
+<ul>
+<li>master — официальная история релизов</li>
+<li>develop — объединение всех функций</li>
+<li>feature — отдельные функции</li>
+<li>release — подготовка выпуска</li>
+<li>hotfix — срочные исправления</li>
+</ul>
+<p>Основные команды:</p>
+<ul>
+<li>git flow init — инициализация</li>
+<li>git flow feature start/finish — работа с функциями</li>
+<li>git flow release start/finish — работа с релизами</li>
+<li>git flow hotfix start/finish — срочные исправления</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="соглашение-об-именовании-denote">Соглашение об именовании Denote</h2>
+<p><strong>Базовая схема:</strong></p>
+<pre><code>DATE==SIGNATURE--TITLE__KEYWORDS.EXTENSION</code></pre>
+<p><strong>Поля</strong>:</p>
+<ul>
+<li><strong>DATE</strong> — <code>YYYYMMDDTHHMMSS</code></li>
+<li><strong>SIGNATURE</strong> — буквенно-цифровая подпись (необязательно)</li>
+<li><strong>TITLE</strong> — заголовок через дефис</li>
+<li><strong>KEYWORDS</strong> — ключевые слова через подчёркивание</li>
+</ul>
+<p><strong>Пример</strong>:</p>
+<pre><code>20260912T143025--otchet-po-laboratornoy-rabote__latex_report.md</code></pre>
+</section>
+<section class="slide level1">
+
+<h2 id="настройка-git">Настройка Git</h2>
+<p><strong>Базовая конфигурация:</strong></p>
+<pre><code>git config --global user.name &quot;Ван Яо&quot;
+git config --global user.email &quot;wangyao200036@126.com&quot;
+git config --global core.quotepath false
+git config --global init.defaultBrancg master
+git config --global core.autocrif true
+git config --global core.safecrif warn</code></pre>
+<p><strong>Безопасность:</strong></p>
+<ul>
+<li><p>SSH-ключи для доступа к удалённым репозиториям</p></li>
+<li><p>PGP-подпись коммитов для верификации авторства</p></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="рабочее-пространство">Рабочее пространство</h2>
+<p><strong>Cтруктура рабочего пространства:</strong></p>
+<pre><code>D:\work\study\2026-2\2026-2==study-practical-scientific-writing\
+├── labs/
+│   ├── lab01/
+│   ├── lab02/
+│   └── lab03/
+├── figures/
+├── references/
+└── release/</code></pre>
+<p><strong>удалённые репозитории:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Платформа</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GitHub</td>
+<td>основной репозиторий</td>
+</tr>
+<tr class="even">
+<td>SourceCraft</td>
+<td>зеркало</td>
+</tr>
+<tr class="odd">
+<td>GitVerse</td>
+<td>зеркало</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level1">
+
+<h2 id="установка-tex-live">Установка TeX Live</h2>
+<p><strong>проверка</strong></p>
+<pre><code>pdflatex --verison</code></pre>
+<p><strong>Компоненты:</strong></p>
+<ul>
+<li>pdfLaTeX,XeLaTex,LuaLaTeX — движки</li>
+<li>tlmgr — менеджер пакетов Среда разработки: VS Code + LaTeX Workshop</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="сравнение-платформ">Сравнение платформ</h2>
+<table>
+<thead>
+<tr class="header">
+<th>платформ</th>
+<th>Назначение</th>
+<th>Доступ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GitHub</td>
+<td>Основной репозиторий</td>
+<td>Международный</td>
+</tr>
+<tr class="even">
+<td>Source Craft</td>
+<td>Зеркало (Yandex)</td>
+<td>Российский</td>
+</tr>
+<tr class="odd">
+<td>GitVerse</td>
+<td>Зеркало (Yandex)</td>
+<td>Российский</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Преимущества мультиплатформенного подхода</strong>:</p>
+<ul>
+<li>Резервирование данных</li>
+<li>Независимость от одной платформы</li>
+<li>Соответствие требованиям курса</li>
+</ul>
+</section>
+<section id="вывод" class="slide level1">
+<h1>Вывод</h1>
+<p>В ходе лабораторной работы было подготовлено полноценное рабочее пространство для научной работы</p>
+<ul>
+<li>Изучены стандарты <strong>SemVer</strong> и <strong>Conventional Commits</strong></li>
+<li>Освоен <strong>Git</strong> и рабочий процесс <strong>Gitflow</strong></li>
+<li>Изучено соглашение об именовании <strong>Denote</strong></li>
+<li>Настроены <strong>SSH</strong> и <strong>PGP</strong> ключи</li>
+<li>Созданы три удалённых репозитория</li>
+<li>Установлен <strong>TeX Live 2026</strong> и настроена среда <strong>VS Code</strong></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="основные-выводы">Основные выводы:</h2>
+<ul>
+<li>Шифры простой замены служат отличным инструментом для образовательных целей</li>
+<li>Они демонстрируют фундаментальные принципы криптографии</li>
+<li>Абсолютно не пригодны для современных требований информационной безопасности</li>
+<li>Рекомендуется использовать только для обучения основам криптографии</li>
+</ul>
+</section>
+<section id="литература" class="slide level1">
+<h1>Литература</h1>
+<ol type="1">
+<li><p>Официальная документация Git. https://git-scm.com/doc</p></li>
+<li><p>Спецификация Conventional Commits. https://www.conventionalcommits.org/</p></li>
+<li><p>Семантическое версионирование. https://semver.org/</p></li>
+<li><p>Документация TeX Live. https://www.tug.org/texlive/</p></li>
+<li><p>Соглашение об именовании Denote. https://protesilaos.com/emacs/denote</p></li>
+</ol>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Wang Yao" />
+  <title>Лабораторная работа №3</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  
+  
+  
+  
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Лабораторная работа №3</h1>
+<p class="author">Wang Yao</p>
+<p class="date">24 Septembe, 2026 Moscow</p>
+</header>
+<h1 id="цель-работы">Цель работы</h1>
+<p>Изучить математический режим LaTex и научиться набирать встроенные и выключенные формулы, освоить расширения пакета “amamath”, изучить изменение шрифтов в математическом режиме, а также познакомиться с пакетами “mathtools” и “unicode-math”.</p>
+<hr />
+<h1 id="ход-лабораторной-работы">Ход лабораторной работы</h1>
+<h2 id="математический-режим">Математический режим</h2>
+<p><strong>Два режима:</strong></p>
+<ul>
+<li><strong>Встроенный</strong> (inline): <code>$...$</code> или <code>\(...\)</code></li>
+<li><strong>Выключной</strong> (display): <code>\[...\]</code> или окружение <code>equation</code></li>
+</ul>
+<p><strong>Особенности встроенного:</strong></p>
+<ul>
+<li>Пробелы игнорируются</li>
+<li>Буквы курсивом</li>
+<li>Вертикальный размер ограничен</li>
+</ul>
+<hr />
+<h2 id="встроенная-математика-пример">Встроенная математика — пример</h2>
+<pre><code>A sentence with inline mathematics: $y = mx + c$.
+
+A second sentence:
+\begin{itemize}
+  \item $5^{2}$
+  \item $3^{2}$
+  \item $4^{2}$
+\end{itemize}</code></pre>
+<p>Результат: формулы встроены в текст и не нарушают межстрочный интервал.</p>
+<hr />
+<h2 id="верхние-и-нижние-индексы">Верхние и нижние индексы</h2>
+<p><strong>Синтаксис:</strong></p>
+<ul>
+<li>Верхний индекс — <code>^</code></li>
+<li>Нижний индекс — <code>_</code></li>
+</ul>
+<p><strong>Пример:</strong></p>
+<pre><code>superscripts $a^{b}$ and subscripts $a_{b}$</code></pre>
+<p><strong>Важно:</strong> всегда использовать фигурные скобки <code>{}</code> для индексов.</p>
+<hr />
+<h2 id="греческие-буквы-и-функции">Греческие буквы и функции</h2>
+<pre><code>Some mathmtics: $y = 2 \sin \theta^{a}$</code></pre>
+<p><strong>Основные команды:</strong></p>
+<ul>
+<li><code>\sin</code>, <code>\cos</code>, <code>\log</code>, <code>\tan</code> — тригонометрические и логарифмические функции</li>
+<li><code>\theta</code>, <code>\alpha</code>, <code>\beta</code>, <code>\gamma</code> — греческие буквы</li>
+</ul>
+<hr />
+<h2 id="выключной-математический-режим">Выключной математический режим</h2>
+<p><strong>Синтаксис:</strong></p>
+<pre><code>\[
+\int_{-\infty}^{+\infty} e^{-x^2}\,dx
+\]</code></pre>
+<p><strong>Особенности:</strong></p>
+<ul>
+<li>Центрируется по умолчанию</li>
+<li>Для крупных уравнений</li>
+<li>Не допускает пустых строк внутри</li>
+</ul>
+<hr />
+<h2 id="пользовательская-команда">Пользовательская команда</h2>
+<p><strong>Пример создания <code>\diff</code>:</strong></p>
+<pre><code>\newcommand{\diff}{\mathop{}\!d}</code></pre>
+<p>Использование:</p>
+<pre><code>\[
+\int_{-\infty}^{+\infty} e^{-x^2} \diff x
+\]
+</code></pre>
+<hr />
+<h2 id="нумерованные-уравнения">Нумерованные уравнения</h2>
+<p><strong>Окружение <code>equation</code>:</strong></p>
+<pre><code>\begin{equation}
+\int_{-\infty}^{+\infty} e^{-x^2}\,dx
+\end{equation}</code></pre>
+<hr />
+<h2 id="пакет-amsmath-align">Пакет amsmath — align*</h2>
+<pre><code>\begin{align*}
+Q_{n,0} &amp;= 1 \quad Q_{0,k}={k=0};
+Q_{n,k} &amp;=Q_{n-1,k}+Q_{n-1,k-1}+\binom{n}{k}
+\end{align*}</code></pre>
+<p><strong>Особенности:</strong></p>
+<ul>
+<li><code>&amp;</code> выравнивает по столбцам</li>
+<li><code>\quad</code> — пространство</li>
+<li><code>\text{}</code> — обычный текст внутри математики</li>
+<li><code>\binom{}{}</code> — биномиальный коэффициент</li>
+<li><code>*</code> отключает нумерацию</li>
+</ul>
+<hr />
+<h2 id="пакет-amsmath-матрицы">Пакет amsmath — матрицы</h2>
+<pre><code>\[
+\begin{matrix}
+a &amp; b &amp; c \\
+e &amp; d &amp; f
+\end{matrix}
+\quad
+\begin{pmatrix}
+a &amp; b &amp; c \\
+e &amp; d &amp; f
+\end{pmatrix}
+\quad
+\begin{bmatrix}
+a &amp; b &amp; c \\
+e &amp; d &amp; f
+\end{bmatrix}
+\]</code></pre>
+<p>Три типа матриц: без скобок, с круглыми, с квадратными.</p>
+<hr />
+<h2 id="шрифты-в-математическом-режиме">Шрифты в математическом режиме</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Команда</th>
+<th style="text-align: left;">Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>\mathrm</code></td>
+<td style="text-align: left;">прямой</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>\mathit</code></td>
+<td style="text-align: left;">курсив</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>\mathbf</code></td>
+<td style="text-align: left;">полужирный</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>\mathsf</code></td>
+<td style="text-align: left;">без засечек</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>\mathtt</code></td>
+<td style="text-align: left;">моноширинный</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>\mathbb</code></td>
+<td style="text-align: left;">двойной штрих</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Пример:</strong></p>
+<pre><code>The matrix $\mathbf{M}$</code></pre>
+<hr />
+<h2 id="сравнение-text-mathit-и-mathrm">Сравнение <code>\text</code>, <code>\mathit</code> и <code>\mathrm</code></h2>
+<pre><code>$\text{bad use } size \neq \mathit{size} \neq \mathrm{size}$</code></pre>
+<p>Показывает разницу между тремя подходами к набору слова «size».</p>
+<hr />
+<h2 id="дополнительные-выравнивания-gather">Дополнительные выравнивания — gather</h2>
+<pre><code>\begin{gather}
+P(x)=ax^{5}+bx^{4}+cx{3}\\
+x^2+x=10
+\end{gather}</code></pre>
+<p><strong>Назначение:</strong> многострочные дисплеи без выравнивания.</p>
+<hr />
+<h2 id="дополнительные-выравнивания-multline">Дополнительные выравнивания — multline</h2>
+<pre><code>\begin{multline*}
+(a+b+c+d)x^{5}+(b+c+d+e)x^{4} \\
++(c+d+e+f)x^{3}+(d+e+f+a)x^{2}\\
++ (f+a+b+c)
+\end{multline*}</code></pre>
+<p><strong>Назначение:</strong> одно большое выражение, разбитое на строки (первая слева, последняя справа).</p>
+<hr />
+<h2 id="столбцы-в-align">Столбцы в align</h2>
+<pre><code>\begin{align*}
+a &amp;=b+1 &amp; c &amp;=d+2 &amp; e &amp;= f+3 \\
+\end{align*}</code></pre>
+<p>Окружения amsmath принимают пары столбцов: первый выравнивается по правому краю, второй — по левому.</p>
+<hr />
+<h2 id="полужирная-математика">Полужирная математика</h2>
+<p><strong>Два метода:</strong></p>
+<pre><code>{\boldmath $(x+y)(x-y)=x^{2}-y{2}$  $ \pi r^2}
+$(x+\mathbf{y})(x-\mathbf{y})=x^{2}-{\mathbf{y}}^{2}$</code></pre>
+<ul>
+<li><code>\boldmath</code> — всё выражение</li>
+<li><code>\mathbf</code> — отдельные буквы</li>
+</ul>
+<hr />
+<h2 id="пакет-bm">Пакет bm</h2>
+<pre><code>\usepackage{bm}
+$(x+\bm{y})(x-\bm{y})=x^{2}-{\bm{y}}^{2}$
+$\alpha+\bm(\alpha) &lt; \beta + \bm(\beta)$</code></pre>
+<p><strong>Позволяет:</strong></p>
+<ul>
+<li>Делать полужирные символы</li>
+<li>Включая <code>=</code> и греческие буквы</li>
+<li>Внутри обычного выражения</li>
+</ul>
+<hr />
+<h2 id="mathtools">Mathtools</h2>
+<pre><code>\usepackage{mathtools}
+\[
+\begin{pmatrix*}[r]
+10&amp;11\\
+1&amp;2
+\end{pmatrix*}
+\]</code></pre>
+<p><strong>Возможности:</strong></p>
+<ul>
+<li>Выравнивание столбцов матриц</li>
+<li>Дополнительные окружения</li>
+<li>Улучшенные команды</li>
+</ul>
+<hr />
+<h2 id="unicode-math">Unicode Math</h2>
+<pre><code>\usepackage{unicode-math}
+\setmainfont{Tex Gyre Pagella}
+\setmainfont{Tex Gyre Pagella Math}</code></pre>
+<p><strong>Компилируется только через LuaLaTeX.</strong></p>
+<p><strong>Позволяет:</strong></p>
+<pre><code>\[A + \symfrak{A}+\symbf{A}+ \symcal{A} + \symscr{A}+
+\symbb{A}\]</code></pre>
+<hr />
+<h2 id="упражнения">Упражнения</h2>
+<p><strong>Опция fleqn (формулы слева):</strong></p>
+<pre><code>\doucumentclass[fleqn]{article}</code></pre>
+<p><strong>Опция leqno (номера слева):</strong></p>
+<pre><code>\doucumentclass[leqno]{article}</code></pre>
+<hr />
+<h1 id="вывод">Вывод</h1>
+<p>В ходе лабораторной работы изучен математический режим LaTeX:</p>
+<ul>
+<li><strong>Встроенный и выключной</strong> режимы</li>
+<li><strong>Верхние и нижние индексы</strong>, греческие буквы</li>
+<li><strong>Пакет amsmath</strong> — align, gather, multline, матрицы</li>
+<li><strong>Шрифты в математическом режиме</strong></li>
+<li><strong>Полужирная математика</strong></li>
+<li><strong>Mathtools и Unicode Math</strong></li>
+</ul>
+<hr />
+<h2 id="основные-выводы">Основные выводы:</h2>
+<ul>
+<li>Математический режим — одна из сильнейших сторон LaTeX</li>
+<li>Пакет <code>amsmath</code> существенно расширяет возможности</li>
+<li>Правильное использование команд шрифтов важно для семантики</li>
+<li>Unicode Math открывает доступ к современным шрифтам</li>
+<li>Пакеты <code>bm</code>, <code>mathtools</code>, <code>unicode-math</code> дополняют базовые возможности</li>
+</ul>
+<hr />
+<h1 id="литература">Литература</h1>
+<ol type="1">
+<li><p>Официальная документация Git. https://git-scm.com/doc</p></li>
+<li><p>Спецификация Conventional Commits. https://www.conventionalcommits.org/</p></li>
+<li><p>Семантическое версионирование. https://semver.org/</p></li>
+<li><p>Документация TeX Live. https://www.tug.org/texlive/</p></li>
+<li><p>Соглашение об именовании Denote. https://protesilaos.com/emacs/denote</p></li>
+</ol>
+</body>
+</html>

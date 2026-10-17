@@ -1,20 +1,27 @@
-.PHONY: help prepare clean
+SHELL := /bin/bash
+COURSE = 
+
+.PHONY: all clean
+
+all: help
 
 help:
-@echo "可用命令："
-@echo "  make help     - 显示帮助"
-@echo "  make prepare  - 初始化课程结构"
-@echo "  make clean    - 清理临时文件"
+	@echo 'Usage:'
+	@echo '  make <target>'
+	@echo 
+	@echo 'Targets:'
+	@grep -E '^[a-zA-Z_0-9.-]+:.*?##.*$$' $(MAKEFILE_LIST) | grep -v '###' | sort | cut -d: -f1- | awk 'BEGIN {FS = ":.*?##"}; {printf "  \033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^###.*' $(MAKEFILE_LIST) | cut -d' ' -f2- | awk 'BEGIN {FS = "###"}; {printf "%s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_0-9.-]+:.*?###.*$$' $(MAKEFILE_LIST) | sort | cut -d: -f2- | awk 'BEGIN {FS = ":.*?###"}; {printf "  \033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@echo
 
-prepare:
-@echo "正在初始化课程结构..."
-@mkdir -p labs/lab01 labs/lab02
-@mkdir -p group-project personal-project external-course
-@mkdir -p release
-@echo "完成！"
-@echo "课程名称：$$(cat COURSE 2>/dev/null || echo '未设置')"
+list:	## List of courses
+	@. ./template/config/script/list-courses
 
-clean:
-@echo "清理 LaTeX 临时文件..."
-@find . -type f \( -name "*.aux" -o -name "*.log" -o -name "*.out" \) -delete
-@echo "清理完成！"
+prepare:	## Generate directories structure
+	@. ./template/config/script/prepare
+	@touch prepare
+
+submodule:	## Update submules
+	git submodule update --init --recursive
+	git submodule foreach 'git fetch origin; git checkout $$(git rev-parse --abbrev-ref HEAD); git reset --hard origin/$$(git rev-parse --abbrev-ref HEAD); git submodule update --recursive; git clean -dfx'
